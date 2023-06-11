@@ -73,8 +73,24 @@ class StoryList {
    * Returns the new Story instance
    */
 
-  async addStory( /* user, newStory */) {
+  async addStory(user, {title, author, url}) {
     // UNIMPLEMENTED: complete this function!
+    //get the token for current user, copied from user.js
+    const token = localStorage.getItem("token");
+    //make post request with story data, used same format I saw in other code for axios syntax ({method:, url:, data:})
+    const res = await axios({
+      method: "POST",
+      url: `${BASE_URL}/stories`,
+      data: {token, 
+        story:{
+          title,
+          author,
+          url
+      }}
+    });
+    const story = new Story(res.data.story)
+    console.log(res)
+    return story;
   }
 }
 
