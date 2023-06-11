@@ -37,3 +37,8 @@
 .story-user {
   display: block;
 }
+
+#submit-story-form {
+  background-color: #f6f6ef;
+  margin: 0;
+}
